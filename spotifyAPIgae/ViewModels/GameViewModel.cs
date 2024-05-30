@@ -16,14 +16,15 @@ namespace spotifyAPIgae.ViewModels
         public SpotifyUser sUser {  get; private set; }
         public GameViewModel(SpotifyUser user)
         {
-            ViewModels = new AppBaseViewModel[]{ new UserViewModel() { user = sUser }, new CreateSessionViewModel() };
+            this.sUser = user;
+
+            ViewModels = new AppBaseViewModel[]{ new UserViewModel() { user = this.sUser }, new CreateSessionViewModel() };
             _currentViewModel = ViewModels[0];
             var canNavNext = this.WhenAnyValue(x => x.CurrentViewModel.CanNavigateNext);
             var canNavPrev = this.WhenAnyValue(x => x.CurrentViewModel.CanNavigatePrevious);
 
             NavigateNextCommand = ReactiveCommand.Create(NavigateNext, canNavNext);
             NavigatePreviousCommand = ReactiveCommand.Create(NavigatePrevious, canNavPrev);
-            this.sUser = user;
         }
         public AppBaseViewModel CurrentViewModel
         {

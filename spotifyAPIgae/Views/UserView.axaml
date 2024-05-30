@@ -33,7 +33,7 @@
 					<ColumnDefinition Width="*"/>
 					<ColumnDefinition Width="*"/>
 				</Grid.ColumnDefinitions>
-			<Label Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" Content="{Binding user, Path=DisplayName, Converter={StaticResource UserConverter}}"/>
+			<Label Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" Content="{Binding user.DisplayName, Converter={StaticResource UserConverter}}"/>
 			<Border Width="{Binding user,Path=ImageWidth}" Height="{Binding user, Path=ImageHeight}" CornerRadius="100" ClipToBounds="True">
 				<Image HorizontalAlignment="Center" Grid.Column="1" Grid.Row="0" asyncImageLoader:ImageLoader.Source="{Binding user, Path=ImageUrl}" Width="{Binding user,Path=ImageWidth}" Height="{Binding user,Path=ImageHeight}"/>
 			</Border>
@@ -55,7 +55,8 @@
 				VerticalContentAlignment="Center"
 				HorizontalContentAlignment="Center"
 				Background="#DA22FF"
-				Foreground="White">Create Session</Button>
+				Foreground="White"
+				>Create Session</Button>
 		
 		
 	</Grid>

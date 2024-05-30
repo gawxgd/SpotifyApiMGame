@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ReactiveUI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,6 @@ namespace spotifyAPIgae.ViewModels
 {
     public class UserViewModel : AppBaseViewModel
     {
-        public SpotifyUser user { get; set; }
         public UserViewModel() 
         {
             
@@ -23,6 +23,12 @@ namespace spotifyAPIgae.ViewModels
         {
             get => true;
             protected set => throw new NotSupportedException();
+        }
+        private SpotifyUser _user;
+        public SpotifyUser user
+        {
+            get => _user;
+            set => this.RaiseAndSetIfChanged(ref _user, value);
         }
     }
 }
