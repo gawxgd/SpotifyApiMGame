@@ -1,0 +1,64 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:spotifyAPIgae.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="spotifyAPIgae.Views.MainView"
+             x:DataType="vm:MainViewModel">
+  <Design.DataContext>
+    <!-- This only sets the DataContext for the previewer in an IDE,
+         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+    <vm:MainViewModel />
+  </Design.DataContext>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*"></RowDefinition>
+			<RowDefinition Height="2*"></RowDefinition>
+		</Grid.RowDefinitions>
+		<Border
+			Margin="5"
+            CornerRadius="10"
+            BorderBrush="PaleVioletRed" BorderThickness="1"
+            Padding="5">
+		<TextBlock 
+			Text="Spotify Game" 
+			HorizontalAlignment="Center" 
+			VerticalAlignment="Center" 
+			Grid.Row="0"/>
+			</Border>
+		<Button VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+				VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+				Grid.Row="1"
+				Click="OnSpotifyLogin">
+			<Button.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                    <GradientStop Color="#DA22FF" Offset="0"/>
+                    <GradientStop Color="#9733EE" Offset="0.51"/>
+                    <GradientStop Color="#DA22FF" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+            <Button.Styles>
+                <Style Selector="Button">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                <GradientStop Color="#DA22FF" Offset="0"/>
+                                <GradientStop Color="#9733EE" Offset="0.51"/>
+                                <GradientStop Color="#DA22FF" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="FontSize" Value="14"/>
+                    <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    <Setter Property="VerticalContentAlignment" Value="Center"/>
+                    <Setter Property="CornerRadius" Value="10"/>
+					</Style>
+            </Button.Styles>
+			
+			Login with Spotify
+		</Button>
+	</Grid>
+</UserControl>
