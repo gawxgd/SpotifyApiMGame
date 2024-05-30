@@ -29,7 +29,7 @@ namespace spotifyAPIgae
         private static readonly string redirectUriSlash = "http://localhost:5173/callback/";
         private static readonly string redirectUri = "http://localhost:5173/callback";
         private static string codeVerifier = null;
-        private static readonly string authPagePath = @"C:\Users\marci\source\repos\spotifyAPIgae\spotifyAPIgae\authPage.html";
+        private static readonly string authPagePath = @"C:\Users\marci\Documents\GitHub\spotifyAPIgae\spotifyAPIgae\authPage.html";
         public SpotifyAuth() { }
         public async Task<SpotifyUser> BeginAuthorization()
         {

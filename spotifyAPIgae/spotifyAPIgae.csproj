@@ -24,4 +24,10 @@
   <ItemGroup>
     <Folder Include="TCP\" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\GameWindow.axaml.cs">
+      <DependentUpon>GameWindow.axaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
 </Project>

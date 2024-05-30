@@ -2,6 +2,7 @@
 using Avalonia.Controls.Templates;
 using spotifyAPIgae.ViewModels;
 using System;
+using System.Diagnostics;
 
 namespace spotifyAPIgae
 {

@@ -8,7 +8,7 @@ namespace spotifyAPIgae.Views;
 public partial class MainView : UserControl
 {
     public SpotifyAuth? auth;
-    public SpotifyUser? user;
+    public SpotifyUser? sUser;
     public MainView()
     {
         InitializeComponent();
@@ -16,8 +16,8 @@ public partial class MainView : UserControl
     public async void OnSpotifyLoginAsync()
     {
         auth = new SpotifyAuth();
-        user = await auth.BeginAuthorization();
-        GameWindow wind = new GameWindow() { DataContext = user };
+        sUser = await auth.BeginAuthorization();
+        GameWindow wind = new GameWindow() { user = sUser };
         wind.Show();
 
     }
