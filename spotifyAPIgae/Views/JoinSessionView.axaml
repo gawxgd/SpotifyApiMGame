@@ -2,21 +2,21 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              xmlns:vm="using:spotifyAPIgae.ViewModels"
-			 mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="spotifyAPIgae.Views.CreateSessionView"
-			 x:DataType="vm:CreateSessionViewModel">
-	<Design.DataContext>
-		<vm:CreateSessionViewModel />
-	</Design.DataContext>
-	<StackPanel>
-		<Border
-			Margin="5"
-            CornerRadius="10"
-            BorderBrush="PaleVioletRed" BorderThickness="1"
-            Padding="5">
-		<Label Margin="10" FontSize="20" HorizontalAlignment="Center">Create Session</Label>
-		</Border>
+			 x:DataType="vm:JoinSessionViewModel"
+             x:Class="spotifyAPIgae.Views.JoinSessionView">
+<Design.DataContext>
+	<vm:JoinSessionViewModel />
+</Design.DataContext>
+<StackPanel>
+	<Border
+		Margin="5"
+		CornerRadius="10"
+		BorderBrush="PaleVioletRed" BorderThickness="1"
+		Padding="5">
+		<Label Margin="10" FontSize="20" HorizontalAlignment="Center">Join Session</Label>
+	</Border>
 	<Grid>
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition/>
@@ -32,7 +32,7 @@
 		<Label Grid.Column="0" Grid.Row="1">Password</Label>
 		<TextBox Name="PasswordTextBox" Grid.Column="1" Grid.Row="1"></TextBox>
 		<Button Click="OnBackToMenu" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="2" Grid.Column="0">Back to Menu</Button>
-		<Button Click="OnStartGame" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="2" Grid.Column="1">Start Game</Button>
+		<Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="2" Grid.Column="1">Start Game</Button>
 	</Grid>
-	</StackPanel>
+</StackPanel>
 </UserControl>

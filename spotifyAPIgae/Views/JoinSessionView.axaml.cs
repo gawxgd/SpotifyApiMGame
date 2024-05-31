@@ -1,13 +1,11 @@
 using Avalonia.Controls;
 using Avalonia.Interactivity;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace spotifyAPIgae.Views
 {
-    public partial class CreateSessionView : UserControl
+    public partial class JoinSessionView : UserControl
     {
-        public CreateSessionView()
+        public JoinSessionView()
         {
             InitializeComponent();
         }
@@ -22,13 +20,6 @@ namespace spotifyAPIgae.Views
                     backButton.Command.Execute(null);
                 }
             }
-        }
-        public void OnStartGame(object sender, RoutedEventArgs args)
-        {
-            var cancellationTokenSource = new CancellationTokenSource();
-            var cancellationToken = cancellationTokenSource.Token;
-            var server = TCP.TCPserver.GetInstance(8888, "localhost", SessionTextBox.Text, PasswordTextBox.Text);
-            var serverTask = Task.Run(() => { server.Run(cancellationToken); });
         }
     }
 }

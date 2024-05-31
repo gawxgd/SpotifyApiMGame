@@ -33,9 +33,9 @@
 					<ColumnDefinition Width="*"/>
 					<ColumnDefinition Width="*"/>
 				</Grid.ColumnDefinitions>
-			<Label Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" Content="{Binding user.DisplayName, Converter={StaticResource UserConverter}}"/>
-			<Border Width="{Binding user,Path=ImageWidth}" Height="{Binding user, Path=ImageHeight}" CornerRadius="100" ClipToBounds="True">
-				<Image HorizontalAlignment="Center" Grid.Column="1" Grid.Row="0" asyncImageLoader:ImageLoader.Source="{Binding user, Path=ImageUrl}" Width="{Binding user,Path=ImageWidth}" Height="{Binding user,Path=ImageHeight}"/>
+			<Label Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" Content="{Binding $parent[Window].user.DisplayName, Converter={StaticResource UserConverter}}"/>
+			<Border Width="{Binding $parent[Window].user.ImageWidth}" Height="{Binding $parent[Window].user.ImageHeight}" CornerRadius="100" ClipToBounds="True">
+				<Image HorizontalAlignment="Center" Grid.Column="1" Grid.Row="0" asyncImageLoader:ImageLoader.Source="{Binding $parent[Window].user.ImageUrl}" Width="{Binding $parent[Window].user.ImageWidth}" Height="{Binding $parent[Window].user.ImageHeight}"/>
 			</Border>
 			</Grid>
 			
