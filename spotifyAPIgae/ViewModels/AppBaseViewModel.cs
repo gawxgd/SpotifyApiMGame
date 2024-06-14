@@ -9,6 +9,6 @@ namespace spotifyAPIgae.ViewModels
     public abstract class AppBaseViewModel : ViewModelBase
     {
         public abstract bool CanNavigateNext { get; protected set; }
-        public abstract bool CanNavigatePrevious { get; protected set; }
+        public abstract bool CanNavigateToMenu { get; protected set; }
     }
 }

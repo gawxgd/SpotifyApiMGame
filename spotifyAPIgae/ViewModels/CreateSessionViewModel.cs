@@ -24,7 +24,7 @@ namespace spotifyAPIgae.ViewModels
             get { return _CanNavigateNext; }
             protected set { this.RaiseAndSetIfChanged(ref _CanNavigateNext, value); }
         }
-        public override bool CanNavigatePrevious
+        public override bool CanNavigateToMenu
         {
             get => true;
             protected set => throw new NotSupportedException();

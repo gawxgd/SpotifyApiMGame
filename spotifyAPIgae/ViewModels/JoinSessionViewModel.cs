@@ -9,6 +9,6 @@ namespace spotifyAPIgae.ViewModels
     internal class JoinSessionViewModel : AppBaseViewModel
     {
         public override bool CanNavigateNext { get => false; protected set => throw new NotImplementedException(); }
-        public override bool CanNavigatePrevious { get => true; protected set => throw new NotImplementedException(); }
+        public override bool CanNavigateToMenu { get => true; protected set => throw new NotImplementedException(); }
     }
 }

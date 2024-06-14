@@ -12,13 +12,26 @@
 		<vm:GameViewModel/>
 	</Design.DataContext>
 
-	<Grid RowDefinitions="*,Auto" Margin="10">
-		<TransitioningContentControl Content="{Binding CurrentViewModel}" />
-
-		<StackPanel Grid.Row="1" Orientation="Horizontal" Spacing="5"
-					HorizontalAlignment="Right">
-			<Button x:Name="BackButton" Command="{Binding NavigatePreviousCommand}" Content="Back" IsVisible="False" />
-			<Button x:Name="NextButton" Command="{Binding NavigateNextCommand}" Content="Next" IsVisible="False" />
-		</StackPanel>
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*"/>
+			<ColumnDefinition Width="Auto"/>
+		</Grid.ColumnDefinitions>
+		<Grid Grid.Column="0">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="*"/>
+				<RowDefinition Height="Auto"/>
+			</Grid.RowDefinitions>
+			
+			<TransitioningContentControl Grid.Row="0" Content="{Binding CurrentViewModel}" />
+			<StackPanel Grid.Row="1" Orientation="Horizontal" Spacing="5"
+							HorizontalAlignment="Right">
+				<Button x:Name="BackButton" Command="{Binding NavigateToMenuCommand}" Content="Back" IsVisible="False" />
+				<Button x:Name="NextButton" Command="{Binding NavigateNextCommand}" Content="Next" IsVisible="False" />
+			</StackPanel>
+		</Grid>
+		<Expander Grid.Column="1" ExpandDirection="Left" VerticalAlignment="Top">
+			<Expander Header = "text"/>
+		</Expander>
 	</Grid>
 </Window>

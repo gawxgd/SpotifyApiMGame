@@ -21,10 +21,10 @@ namespace spotifyAPIgae.ViewModels
             ViewModels = new AppBaseViewModel[]{ new UserViewModel() { user = this.sUser }, new CreateSessionViewModel(), new JoinSessionViewModel() };
             _currentViewModel = ViewModels[0];
             var canNavNext = this.WhenAnyValue(x => x.CurrentViewModel.CanNavigateNext);
-            var canNavPrev = this.WhenAnyValue(x => x.CurrentViewModel.CanNavigatePrevious);
+            var canNavMenu = this.WhenAnyValue(x => x.CurrentViewModel.CanNavigateToMenu);
 
             NavigateNextCommand = ReactiveCommand.Create(NavigateNext, canNavNext);
-            NavigatePreviousCommand = ReactiveCommand.Create(NavigatePrevious, canNavPrev);
+            NavigateToMenuCommand = ReactiveCommand.Create(NavigateToMenu, canNavMenu);
         }
         public AppBaseViewModel CurrentViewModel
         {
@@ -38,12 +38,11 @@ namespace spotifyAPIgae.ViewModels
             var index = Array.IndexOf(ViewModels, CurrentViewModel) + 1;
             CurrentViewModel = ViewModels[index];
         }
-        public ICommand NavigatePreviousCommand { get; }
+        public ICommand NavigateToMenuCommand { get; }
 
-        private void NavigatePrevious()
+        private void NavigateToMenu()
         {
-            var index = Array.IndexOf(ViewModels, CurrentViewModel) - 1;
-            CurrentViewModel = ViewModels[index];
+            CurrentViewModel = ViewModels.First();
         }
     }
 }

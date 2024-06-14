@@ -19,7 +19,7 @@ namespace spotifyAPIgae.ViewModels
             get => true;
             protected set => throw new NotSupportedException();
         }
-        public override bool CanNavigatePrevious
+        public override bool CanNavigateToMenu
         {
             get => true;
             protected set => throw new NotSupportedException();
