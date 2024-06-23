@@ -19,20 +19,25 @@ namespace spotifyAPIgae.TCP
         private string password;
         private ConnectionClient client;
         private CancellationToken token;
-        public static TCPclient GetInstance(Int32 port, string ip, string sessionName, string sessionPassword)
+        public static TCPclient GetInstance(Int32 port, string ip, string userName, string sessionPassword)
         {
-            /*
+            
             if (_tcpClientInstance == null)
-                return new TCPclient(port, IP, sessionName, sessionPassword);
-            */
+                return new TCPclient(port, ip, userName, sessionPassword);
+            
             return _tcpClientInstance;
         }
-        private TCPclient(Int32 port, IPAddress ip, string sessionName, string sessionPassword)
+        private TCPclient(Int32 port, string ip, string userName, string sessionPassword)
         {
-         
+            this.port = port;
+            connectionAddress = ip;
+            this.name = userName;
+            this.password = sessionPassword;
+            this.token = token;
         }
-        public bool ConnectionRun()
+        public bool Run(CancellationToken token)
         {
+            this.token = token;
             IPHostEntry entry;
             try
             {

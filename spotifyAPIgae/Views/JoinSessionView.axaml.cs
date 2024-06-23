@@ -1,5 +1,8 @@
 using Avalonia.Controls;
 using Avalonia.Interactivity;
+using System.Threading.Tasks;
+using System.Threading;
+using spotifyAPIgae.ViewModels;
 
 namespace spotifyAPIgae.Views
 {
@@ -9,6 +12,8 @@ namespace spotifyAPIgae.Views
         {
             InitializeComponent();
         }
+        private JoinSessionViewModel ViewModel => DataContext as JoinSessionViewModel;
+
         public void OnBackToMenu(object sender, RoutedEventArgs args)
         {
             var window = (Window)this.VisualRoot;
@@ -19,6 +24,21 @@ namespace spotifyAPIgae.Views
                 {
                     backButton.Command.Execute(null);
                 }
+            }
+        }
+        public void OnJoinGame(object sender, RoutedEventArgs args)
+        {
+            var cancellationTokenSource = new CancellationTokenSource();
+            var cancellationToken = cancellationTokenSource.Token;
+            if (ViewModel?.user != null)
+            {
+                var client = TCP.TCPclient.GetInstance(8888, "localhost", ViewModel.user.DisplayName, PasswordTextBox.Text);
+                var clientTask = Task.Run(() => { client.Run(cancellationToken); });
+            }
+            else
+            {
+                var client = TCP.TCPclient.GetInstance(8888, "localhost", "unable", PasswordTextBox.Text);
+                var clientTask = Task.Run(() => { client.Run(cancellationToken); });
             }
         }
     }

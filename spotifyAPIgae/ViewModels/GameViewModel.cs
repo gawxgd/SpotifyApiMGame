@@ -18,7 +18,7 @@ namespace spotifyAPIgae.ViewModels
         {
             this.sUser = user;
 
-            ViewModels = new AppBaseViewModel[]{ new UserViewModel() { user = this.sUser }, new CreateSessionViewModel(), new JoinSessionViewModel() };
+            ViewModels = new AppBaseViewModel[]{ new UserViewModel() { user = this.sUser }, new CreateSessionViewModel(), new JoinSessionViewModel() { user = this.sUser } };
             _currentViewModel = ViewModels[0];
             var canNavNext = this.WhenAnyValue(x => x.CurrentViewModel.CanNavigateNext);
             var canNavMenu = this.WhenAnyValue(x => x.CurrentViewModel.CanNavigateToMenu);

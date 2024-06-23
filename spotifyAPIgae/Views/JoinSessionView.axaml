@@ -7,7 +7,7 @@
 			 x:DataType="vm:JoinSessionViewModel"
              x:Class="spotifyAPIgae.Views.JoinSessionView">
 <Design.DataContext>
-	<vm:JoinSessionViewModel />
+	<vm:JoinSessionViewModel/>
 </Design.DataContext>
 <StackPanel>
 	<Border
@@ -27,12 +27,12 @@
 			<RowDefinition/>
 			<RowDefinition/>
 		</Grid.RowDefinitions>
-		<Label Grid.Column="0" Grid.Row="0">Session Name:</Label>
+		<Label Grid.Column="0" Grid.Row="0">user name:</Label>
 		<TextBox Name="SessionTextBox" Grid.Column="1" Grid.Row="0"></TextBox>
 		<Label Grid.Column="0" Grid.Row="1">Password</Label>
 		<TextBox Name="PasswordTextBox" Grid.Column="1" Grid.Row="1"></TextBox>
 		<Button Click="OnBackToMenu" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="2" Grid.Column="0">Back to Menu</Button>
-		<Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="2" Grid.Column="1">Start Game</Button>
+		<Button Click ="OnJoinGame" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="2" Grid.Column="1">Start Game</Button>
 	</Grid>
 </StackPanel>
 </UserControl>
