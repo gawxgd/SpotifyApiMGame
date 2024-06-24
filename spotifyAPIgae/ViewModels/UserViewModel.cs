@@ -9,11 +9,6 @@ namespace spotifyAPIgae.ViewModels
 {
     public class UserViewModel : AppBaseViewModel
     {
-        public UserViewModel() 
-        {
-            
-        }
-
         public override bool CanNavigateNext
         {
             get => true;

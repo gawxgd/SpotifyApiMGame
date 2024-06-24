@@ -17,6 +17,7 @@ namespace spotifyAPIgae.ViewModels
         public GameViewModel(SpotifyUser user)
         {
             this.sUser = user;
+            Debug.WriteLine($"GameViewModel initialized with user: {sUser.DisplayName}");
 
             ViewModels = new AppBaseViewModel[]{ new UserViewModel() { user = this.sUser }, new CreateSessionViewModel(), new JoinSessionViewModel() { user = this.sUser } };
             _currentViewModel = ViewModels[0];

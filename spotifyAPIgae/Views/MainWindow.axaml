@@ -8,5 +8,5 @@
         x:Class="spotifyAPIgae.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
         Title="spotifyAPIgae">
-        <views:MainView />
+        <views:MainView Name="mView"/>
 </Window>

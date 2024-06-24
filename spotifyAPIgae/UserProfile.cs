@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Newtonsoft.Json;
 
 namespace spotifyAPIgae
@@ -11,6 +10,11 @@ namespace spotifyAPIgae
     {
         [JsonProperty("spotify")]
         public string Spotify { get; set; }
+
+        public ExternalUrls Clone()
+        {
+            return (ExternalUrls)MemberwiseClone();
+        }
     }
 
     public class Followers
@@ -20,6 +24,11 @@ namespace spotifyAPIgae
 
         [JsonProperty("total")]
         public int Total { get; set; }
+
+        public Followers Clone()
+        {
+            return (Followers)MemberwiseClone();
+        }
     }
 
     public class Image
@@ -32,9 +41,14 @@ namespace spotifyAPIgae
 
         [JsonProperty("width")]
         public int Width { get; set; }
+
+        public Image Clone()
+        {
+            return (Image)MemberwiseClone();
+        }
     }
 
-    public class SpotifyUser
+    public class SpotifyUser : ICloneable
     {
         public string ImageUrl => Images?.FirstOrDefault()?.Url;
         public int? ImageWidth => Images?.FirstOrDefault()?.Width;
@@ -63,5 +77,13 @@ namespace spotifyAPIgae
 
         [JsonProperty("uri")]
         public string Uri { get; set; }
+
+        public object Clone()
+        {
+            // Serialize the current object to JSON
+            var json = JsonConvert.SerializeObject(this);
+            // Deserialize the JSON back to a new instance
+            return JsonConvert.DeserializeObject<SpotifyUser>(json);
+        }
     }
 }

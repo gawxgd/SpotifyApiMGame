@@ -3,6 +3,7 @@ using Avalonia.Interactivity;
 using System.Threading.Tasks;
 using System.Threading;
 using spotifyAPIgae.ViewModels;
+using System.Diagnostics;
 
 namespace spotifyAPIgae.Views
 {

@@ -8,6 +8,7 @@ namespace spotifyAPIgae.Views
         public UserView()
         {
             InitializeComponent();
+
         }
         public void OnJoinSession(object sender, RoutedEventArgs args)
         {
