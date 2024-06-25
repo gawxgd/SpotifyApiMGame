@@ -15,13 +15,14 @@ using spotifyAPIgae.TCP.Messages;
 
 namespace spotifyAPIgae.TCP
 {
-    public class TCPserver
+    public class TCPserver : TCPevents
     {
         private static TCPserver _tcpServerInstance = null;
         private List<ConnectionClient> activeClients;
         private TcpListener listener;
         private string password;
         private Task sendingTask;
+
         public static TCPserver GetInstance(Int32 port, string ip, string sessionName, string sessionPassword)
         {
             if (_tcpServerInstance == null)
@@ -103,6 +104,7 @@ namespace spotifyAPIgae.TCP
                                 activeClients.Remove(client);
                                 continue;
                             }
+                            OnMessageReceived(new MessageReceivedEventArgs(recived));
                             Debug.WriteLine($"{recived.Time.ToString("HH:mm")} | Recived {recived.Text} From {recived.Sender} {Environment.NewLine}");
                             foreach (var cl in activeClients)
                             {

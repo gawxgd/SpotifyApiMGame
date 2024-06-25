@@ -7,10 +7,14 @@ using System.Net.Sockets;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
+using ReactiveUI;
+using System.Collections.ObjectModel;
+using System.Windows.Input;
+using spotifyAPIgae.TCP.Messages;
 
 namespace spotifyAPIgae.TCP
 {
-    public class TCPclient
+    public class TCPclient : TCPevents
     {
         private static TCPclient _tcpClientInstance;
         private string connectionAddress;
@@ -19,6 +23,7 @@ namespace spotifyAPIgae.TCP
         private string password;
         private ConnectionClient client;
         private CancellationToken token;
+        
         public static TCPclient GetInstance(Int32 port, string ip, string userName, string sessionPassword)
         {
             
@@ -121,7 +126,7 @@ namespace spotifyAPIgae.TCP
                         {
                            // form.Invoke(new Action(() => form.createPiwo()));
                         }
-
+                        OnMessageReceived(new MessageReceivedEventArgs(recivedOG));
                     }
                 }
             }
@@ -130,5 +135,6 @@ namespace spotifyAPIgae.TCP
 
             }
         }
+       
     }
 }

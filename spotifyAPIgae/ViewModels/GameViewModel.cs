@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using spotifyAPIgae.TCP;
 
 namespace spotifyAPIgae.ViewModels
 {
@@ -27,7 +28,8 @@ namespace spotifyAPIgae.ViewModels
 
             NavigateNextCommand = ReactiveCommand.Create(NavigateNext, canNavNext);
             NavigateToMenuCommand = ReactiveCommand.Create(NavigateToMenu, canNavMenu);
-            NavigateToGameCommand = ReactiveCommand.Create(NavigateToGame, canNavGame); 
+            NavigateToGameCommand = ReactiveCommand.Create<TCPevents>(NavigateToGame);
+
         }
         public AppBaseViewModel CurrentViewModel
         {
@@ -48,9 +50,14 @@ namespace spotifyAPIgae.ViewModels
             CurrentViewModel = ViewModels.First();
         }
         public ICommand NavigateToGameCommand { get; }
-        private void NavigateToGame()
+        private void NavigateToGame(TCPevents tcp)
         {
-            CurrentViewModel = ViewModels.Last();
+            CurrentViewModel = ViewModels.Last(); // Navigate to the last view model (assuming it's ChatViewModel)
+            if (CurrentViewModel is ChatViewModel chatViewModel)
+            {
+                chatViewModel.SubscribeReceivingMessages(tcp); // Subscribe to receive messages
+            }
         }
+
     }
 }

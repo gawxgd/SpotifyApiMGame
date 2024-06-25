@@ -35,7 +35,7 @@ namespace spotifyAPIgae.Views
                 var startButton = gameWindow.FindControl<Button>("StartGameButton");
                 if (startButton != null)
                 {
-                    startButton.Command.Execute(null);
+                    startButton.Command.Execute(server);
                 }
             }
         }
