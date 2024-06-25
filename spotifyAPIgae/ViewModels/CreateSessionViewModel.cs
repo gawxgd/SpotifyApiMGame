@@ -15,7 +15,7 @@ namespace spotifyAPIgae.ViewModels
             // Listen to changes of MailAddress and Password and update CanNavigateNext accordingly
             //this.WhenAnyValue(x => x.MailAddress, x => x.Password)
             //    .Subscribe(_ => UpdateCanNavigateNext());
-            _CanNavigateNext = false;
+            _CanNavigateNext = true;
         }
 
         private bool _CanNavigateNext;
@@ -29,6 +29,7 @@ namespace spotifyAPIgae.ViewModels
             get => true;
             protected set => throw new NotSupportedException();
         }
+        public override bool CanNavigateToGame { get => true; protected set => throw new NotImplementedException(); }
 
         private void UpdateCanNavigateNext()
         {

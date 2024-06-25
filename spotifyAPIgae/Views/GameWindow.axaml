@@ -26,8 +26,9 @@
 			<TransitioningContentControl Grid.Row="0" Content="{Binding CurrentViewModel}" />
 			<StackPanel Grid.Row="1" Orientation="Horizontal" Spacing="5"
 							HorizontalAlignment="Right">
-				<Button x:Name="BackButton" Command="{Binding NavigateToMenuCommand}" Content="Back" IsVisible="False" />
-				<Button x:Name="NextButton" Command="{Binding NavigateNextCommand}" Content="Next" IsVisible="False" />
+				<Button x:Name="BackButton" Command="{Binding NavigateToMenuCommand}" IsVisible="False" />
+				<Button x:Name="NextButton" Command="{Binding NavigateNextCommand}" IsVisible="False" />
+				<Button x:Name="StartGameButton" Command="{Binding NavigateToGameCommand}" IsVisible = "False"/>
 			</StackPanel>
 		</Grid>
 		<Expander Grid.Column="1" ExpandDirection="Left" VerticalAlignment="Top">

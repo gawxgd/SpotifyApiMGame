@@ -10,5 +10,6 @@ namespace spotifyAPIgae.ViewModels
     {
         public abstract bool CanNavigateNext { get; protected set; }
         public abstract bool CanNavigateToMenu { get; protected set; }
+        public abstract bool CanNavigateToGame { get; protected set; }
     }
 }

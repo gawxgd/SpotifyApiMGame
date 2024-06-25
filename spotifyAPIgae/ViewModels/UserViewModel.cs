@@ -25,5 +25,6 @@ namespace spotifyAPIgae.ViewModels
             get => _user;
             set => this.RaiseAndSetIfChanged(ref _user, value);
         }
+        public override bool CanNavigateToGame { get => false; protected set => throw new NotImplementedException(); }
     }
 }

@@ -29,6 +29,15 @@ namespace spotifyAPIgae.Views
             var cancellationToken = cancellationTokenSource.Token;
             var server = TCP.TCPserver.GetInstance(8888, "localhost", SessionTextBox.Text, PasswordTextBox.Text);
             var serverTask = Task.Run(() => { server.Run(cancellationToken); });
+            var window = (Window)this.VisualRoot;
+            if (window is GameWindow gameWindow)
+            {
+                var startButton = gameWindow.FindControl<Button>("StartGameButton");
+                if (startButton != null)
+                {
+                    startButton.Command.Execute(null);
+                }
+            }
         }
     }
 }
