@@ -44,6 +44,7 @@ namespace spotifyAPIgae.Views
                 var clientTask = Task.Run(() => { client.Run(cancellationToken); });
             }
             var window = (Window)this.VisualRoot;
+            
             if (window is GameWindow gameWindow)
             {
                 var startButton = gameWindow.FindControl<Button>("StartGameButton");

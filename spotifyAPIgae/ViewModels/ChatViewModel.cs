@@ -9,18 +9,21 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Avalonia.Threading;
 using spotifyAPIgae.TCP;
+using System.Diagnostics;
 namespace spotifyAPIgae.ViewModels
 {
     public class ChatViewModel : AppBaseViewModel
     {
         private string _newMessage;
         private string _currentUser;
+        private string userName;
+        public TCPevents tcp { get; set; }
         // add tcp and sending messages
-        public ChatViewModel()
+        public ChatViewModel(string userName)
         {
             Messages = new ObservableCollection<MessageModel>();
             SendMessageCommand = ReactiveCommand.Create(SendMessage);
-            _currentUser = "You"; // You can set this to the current user's name dynamically
+            this.userName = userName;
         }
         public ObservableCollection<MessageModel> Messages { get; }
         public string NewMessage
@@ -33,10 +36,11 @@ namespace spotifyAPIgae.ViewModels
         {
             if (!string.IsNullOrWhiteSpace(NewMessage))
             {
+                tcp.SendToAll(new Message(userName, NewMessage, DateTime.Now));
                 Messages.Add(new MessageModel
                 {
                     Message = NewMessage,
-                    Sender = _currentUser,
+                    Sender = "You",
                     Alignment = Avalonia.Layout.HorizontalAlignment.Right // Assuming current user messages are aligned right
                 });
                 NewMessage = string.Empty;
@@ -55,9 +59,9 @@ namespace spotifyAPIgae.ViewModels
                 });
             });
         }
-        public void SubscribeReceivingMessages(TCPevents tcpEvent)
+        public void SubscribeReceivingMessages()
         {
-            tcpEvent.MessageReceived += HandleMessageReceived;
+            tcp.MessageReceived += HandleMessageReceived;
         }
         public override bool CanNavigateNext { get => false; protected set => throw new NotImplementedException(); }
         public override bool CanNavigateToMenu { get => true; protected set => throw new NotImplementedException(); }

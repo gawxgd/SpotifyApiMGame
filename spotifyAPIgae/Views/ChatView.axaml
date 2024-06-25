@@ -12,12 +12,13 @@
 			<RowDefinition Height="Auto"/>
 			<RowDefinition Height="Auto"/>
 		</Grid.RowDefinitions>
-		<ListBox Grid.Row="0" ItemsSource="{Binding Messages}" Background="Black">
+		<ListBox Grid.Row="0" ItemsSource="{Binding Messages}" Background="Black" IsHitTestVisible="False">
 			<ListBox.ItemTemplate>
 				<DataTemplate>
 					<Border BorderBrush="PaleVioletRed" BorderThickness="1"
                             CornerRadius="4" Padding="4"
-							HorizontalAlignment="{Binding Alignment}">
+							HorizontalAlignment="{Binding Alignment}"
+							IsHitTestVisible="True">
 						<StackPanel>
 							<TextBlock Text="{Binding Sender}" FontWeight="Bold" HorizontalAlignment="Left" Margin="0,0,0,4"/>
 							<TextBlock Text="{Binding Message}" TextWrapping="Wrap"/>
@@ -37,7 +38,8 @@
 				<ColumnDefinition Width ="*"/>
 				<ColumnDefinition Width="Auto"/>
 			</Grid.ColumnDefinitions>
-			<TextBox Grid.Column="0" Name="chatTextBox" Text="{Binding NewMessage, Mode=TwoWay}" TextWrapping="Wrap"/>
+			<TextBox Grid.Column="0" Name="chatTextBox" Text="{Binding NewMessage, Mode=TwoWay}" 
+					 TextWrapping="Wrap" KeyDown="chatTextBox_KeyDown"/>
 			<Button Grid.Column="1" Name="sendButton" Command="{Binding SendMessageCommand}">Send</Button>
 		</Grid>
 	</Grid>

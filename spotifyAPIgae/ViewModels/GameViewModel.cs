@@ -20,7 +20,7 @@ namespace spotifyAPIgae.ViewModels
             this.sUser = user;
             Debug.WriteLine($"GameViewModel initialized with user: {sUser.DisplayName}");
 
-            ViewModels = new AppBaseViewModel[]{ new UserViewModel() { user = this.sUser }, new CreateSessionViewModel(), new JoinSessionViewModel() { user = this.sUser }, new ChatViewModel() };
+            ViewModels = new AppBaseViewModel[]{ new UserViewModel() { user = this.sUser }, new CreateSessionViewModel(), new JoinSessionViewModel() { user = this.sUser }, new ChatViewModel(sUser.DisplayName) };
             _currentViewModel = ViewModels[0];
             var canNavNext = this.WhenAnyValue(x => x.CurrentViewModel.CanNavigateNext);
             var canNavMenu = this.WhenAnyValue(x => x.CurrentViewModel.CanNavigateToMenu);
@@ -55,7 +55,8 @@ namespace spotifyAPIgae.ViewModels
             CurrentViewModel = ViewModels.Last(); // Navigate to the last view model (assuming it's ChatViewModel)
             if (CurrentViewModel is ChatViewModel chatViewModel)
             {
-                chatViewModel.SubscribeReceivingMessages(tcp); // Subscribe to receive messages
+                chatViewModel.tcp = tcp;
+                chatViewModel.SubscribeReceivingMessages(); // Subscribe to receive messages
             }
         }
 

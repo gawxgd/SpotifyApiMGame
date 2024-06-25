@@ -152,7 +152,7 @@ namespace spotifyAPIgae.TCP
                 return false;
             }
         }
-        private void SendMesage(Messages.Message message, ConnectionClient client)
+        public override void SendMesage(Messages.Message message, ConnectionClient client)
         {
             try
             {
@@ -165,12 +165,12 @@ namespace spotifyAPIgae.TCP
                 Debug.WriteLine(ex);
             }
         }
-        public async Task SendMessageAsync(Messages.Message message, ConnectionClient client)
+        public override async Task SendMessageAsync(Messages.Message message, ConnectionClient client)
         {
             await sendingTask.ContinueWith((Action<Task>)(task => SendMesage(message, client)));
             Debug.WriteLine($"{DateTime.Now.ToString("HH:mm")} | Send {message.Text} to {client.Name} {Environment.NewLine}");
         }
-        public void SendToAll(Messages.Message mes)
+        public override void SendToAll(Messages.Message mes)
         {
             foreach (ConnectionClient client in activeClients)
             {

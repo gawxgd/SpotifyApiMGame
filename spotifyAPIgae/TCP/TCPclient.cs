@@ -23,7 +23,8 @@ namespace spotifyAPIgae.TCP
         private string password;
         private ConnectionClient client;
         private CancellationToken token;
-        
+        private Task sendingTask;
+
         public static TCPclient GetInstance(Int32 port, string ip, string userName, string sessionPassword)
         {
             
@@ -39,6 +40,7 @@ namespace spotifyAPIgae.TCP
             this.name = userName;
             this.password = sessionPassword;
             this.token = token;
+            sendingTask = Task.Factory.StartNew(() => { });
         }
         public bool Run(CancellationToken token)
         {
@@ -135,6 +137,28 @@ namespace spotifyAPIgae.TCP
 
             }
         }
-       
+        public override void SendMesage(Messages.Message message, ConnectionClient client)
+        {
+            try
+            {
+                string messageJson = Newtonsoft.Json.JsonConvert.SerializeObject(message);
+                client.Writer.WriteLine(messageJson);
+                client.Writer.Flush();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
+        }
+        public override async Task SendMessageAsync(Messages.Message message, ConnectionClient client)
+        {
+            await sendingTask.ContinueWith((Action<Task>)(task => SendMesage(message, client)));
+            Debug.WriteLine($"{DateTime.Now.ToString("HH:mm")} | Send {message.Text} to {client.Name} {Environment.NewLine}");
+        }
+        public override void SendToAll(Messages.Message mes)
+        {
+            SendMessageAsync(mes, client);
+        }
+
     }
 }
