@@ -11,13 +11,13 @@
 </Design.DataContext>
 <StackPanel>
 	<Border
-		Margin="5"
+		Margin="15,50,15,15"
 		CornerRadius="10"
 		BorderBrush="PaleVioletRed" BorderThickness="1"
 		Padding="5">
 		<Label Margin="10" FontSize="20" HorizontalAlignment="Center">Join Session</Label>
 	</Border>
-	<Grid>
+	<Grid Margin="25">
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition/>
 			<ColumnDefinition/>
@@ -28,11 +28,11 @@
 			<RowDefinition/>
 		</Grid.RowDefinitions>
 		<Label Grid.Column="0" Grid.Row="0">user name:</Label>
-		<TextBox Name="SessionTextBox" Grid.Column="1" Grid.Row="0"></TextBox>
+		<TextBox Margin="0,0,0,25" Name="SessionTextBox" Grid.Column="1" Grid.Row="0"></TextBox>
 		<Label Grid.Column="0" Grid.Row="1">Password</Label>
-		<TextBox Name="PasswordTextBox" Grid.Column="1" Grid.Row="1"></TextBox>
-		<Button Click="OnBackToMenu" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="2" Grid.Column="0">Back to Menu</Button>
-		<Button Click ="OnJoinGame" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="2" Grid.Column="1">Start Game</Button>
+		<TextBox Margin="0,0,0,25" Name="PasswordTextBox" Grid.Column="1" Grid.Row="1"></TextBox>
+		<Button Margin="0,0,25,0" HorizontalContentAlignment="Center" Click="OnBackToMenu" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="2" Grid.Column="0">Back to Menu</Button>
+		<Button HorizontalContentAlignment="Center" Click ="OnJoinGame" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="2" Grid.Column="1">Start Game</Button>
 	</Grid>
 </StackPanel>
 </UserControl>
