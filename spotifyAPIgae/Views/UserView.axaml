@@ -22,7 +22,7 @@
 			<RowDefinition/>
 		</Grid.RowDefinitions>
 		<Border
-			Margin="5"
+			Margin="25,25,25,0"
             CornerRadius="10"
             BorderBrush="PaleVioletRed" BorderThickness="1"
             Padding="5">
@@ -42,12 +42,12 @@
 			
 		</Border>
 		
-		<!-- change button colors-->
 		<Button Grid.Row="1" Click ="OnJoinSession"
-				VerticalAlignment="Stretch"
+				VerticalAlignment ="Stretch"
 				HorizontalAlignment="Stretch"
 				VerticalContentAlignment="Center"
 				HorizontalContentAlignment="Center"
+				Margin="25,25,25,25"
 				Background="#DA22FF"
 				Foreground="White">Join Session</Button>
 		<Button Grid.Row="2" Click="OnCreateSession"
@@ -55,8 +55,9 @@
 				HorizontalAlignment="Stretch"
 				VerticalContentAlignment="Center"
 				HorizontalContentAlignment="Center"
-				Background="#DA22FF"
+				Margin="25,0,25,50"
 				Foreground="White"
+				Background="#DA22FF"
 				>Create Session</Button>
 		
 		
